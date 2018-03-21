@@ -1,0 +1,24 @@
+version: '3'
+services:
+
+  mariadb:
+      image: mariadb
+      environment:
+          - MYSQL_ROOT_PASSWORD=password
+
+  postgres:
+      image: postgres
+      environment:
+          - POSTGRES_PASSWORD=password
+
+  rstudio:
+    image: rocker/tidyverse
+    ports: 
+      - 8787:8787
+    depends_on:
+      - postgres
+      - mariadb
+
+
+
+
